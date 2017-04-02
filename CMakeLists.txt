@@ -9,13 +9,9 @@ include(cmake/pods.cmake)
 include(cmake/lcmtypes.cmake)
 lcmtypes_build()
 
-# build libfreenect
-set(LIB_SUFFIX "" CACHE STRING "Suffix for libfreenect installation directory")
-#add_subdirectory(libfreenect)
-
-include_directories(${LCMTYPES_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libfreenect/include)
-
+# include libfreenect
+pkg_check_modules(FNECT REQUIRED libfreenect)
+include_directories(${LCMTYPES_INCLUDE_DIRS} ${FNECT_INCLUDE_DIRS})
 
 # build LCM kinect utility
 add_subdirectory(src/kinect-lcm)
