@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <poll.h>
-#include <lcmtypes/bot_core.h>
+#include <lcmtypes/bot2_core.h>
 #include <bot_core/lcm_util.h>
 #include "kinectOpenniLCM.h"
 

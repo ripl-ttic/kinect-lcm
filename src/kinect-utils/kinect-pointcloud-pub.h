@@ -2,7 +2,7 @@
 #define __lidartilt_h__
 
 #include <glib.h>
-#include <lcmtypes/bot_core.h>
+#include <lcmtypes/bot2_core.h>
 #include <bot_core/bot_core.h>
 #include <iostream>
 #include <iomanip>
