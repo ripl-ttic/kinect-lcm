@@ -6,23 +6,23 @@
 
 #include <lcm/lcm-cpp.hpp>
 
-#include "lcmtypes/bot_core.hpp"
+#include "lcmtypes/bot_core/image_t.hpp"
 #include "lcmtypes/kinect.hpp"
 class rgb_tool{
   public:
     rgb_tool(lcm::LCM* &lcm_);
     ~rgb_tool(){}
-    
+
   private:
     lcm::LCM* lcm_;
-    
-    void kinectHandler(const lcm::ReceiveBuffer* rbuf, const std::string& channel, const  kinect::frame_msg_t* msg); 
-    
+
+    void kinectHandler(const lcm::ReceiveBuffer* rbuf, const std::string& channel, const  kinect::frame_msg_t* msg);
+
     int decimate_;
-};    
+};
 
 rgb_tool::rgb_tool(lcm::LCM* &lcm_): lcm_(lcm_){
-        
+
   lcm_->subscribe( "KINECT_FRAME",&rgb_tool::kinectHandler,this);
 
 }
@@ -60,7 +60,7 @@ int main(int argc, char ** argv) {
   if(!lcm->good()){
     std::cerr <<"ERROR: lcm is not good()" <<std::endl;
   }
-  
+
   rgb_tool app(lcm);
   std::cout << "Ready image tool" << std::endl << "============================" << std::endl;
   while(0 == lcm->handle());
